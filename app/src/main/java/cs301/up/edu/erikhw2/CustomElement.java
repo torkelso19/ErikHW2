@@ -1,6 +1,5 @@
 package cs301.up.edu.erikhw2;
 
-import java.util.Random;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -13,7 +12,8 @@ import android.graphics.Paint;
  * certain methods and variables to work with this app.
  *
  * @author Andrew Nuxoll
- * @version Spring 2015
+ * @author Erik Torkelson
+ * Date: February 19, 2019
  *
  */
 public abstract class CustomElement {
@@ -30,17 +30,11 @@ public abstract class CustomElement {
     /** this color is used to draw outlines around a shape */
     protected Paint outlinePaint = new Paint();
 
-    /** this paint is used to draw highlights */
-    protected Paint highlightPaint = new Paint();
-
-    /** a random number generator for changing to a random color */
-    protected Random myRand = new Random();
-
     /**
      * This gives the element a name for identification. This need not be unique
      * but it's helpful
      */
-    protected String myName = "$NO NAME$";
+    private String myName = "$NO NAME$";
 
     /** the ctor requires that you give the object a name and a color */
     public CustomElement(String name, int color) {
@@ -51,13 +45,6 @@ public abstract class CustomElement {
         // black is an obvious choice for outlines
         this.outlinePaint.setColor(Color.BLACK);
         this.outlinePaint.setStyle(Paint.Style.STROKE);
-
-        // yellow is a good choice for highlighting but, in case the shape is
-        // already yellow add a shadow
-        this.highlightPaint.setColor(Color.YELLOW);
-        this.highlightPaint.setStyle(Paint.Style.STROKE);
-        this.highlightPaint.setStrokeWidth(5); // nice wide, visible line
-        this.highlightPaint.setShadowLayer(5, 1, 1, Color.MAGENTA);
 
     }
 
@@ -83,13 +70,6 @@ public abstract class CustomElement {
         return this.myPaint.getColor();
     }
 
-    /** switch to a random color */
-    public void setRandomColor() {
-        int randColor = Color.rgb(myRand.nextInt(256),
-                myRand.nextInt(256),
-                myRand.nextInt(256));
-        setColor(randColor);
-    }
 
     /*
      * ===================================================================
@@ -109,15 +89,5 @@ public abstract class CustomElement {
      */
     public abstract boolean containsPoint(int x, int y);
 
-    /** an element must be able to determine its approximate area */
-    public abstract int getSize();
-
-    /**
-     * an element can become highlighted. In this case, the element is
-     * responsible for adding a highlight. An easy way to do this is to draw a
-     * bright colored border using {@link #highlightPaint} but you can do what
-     * you like.
-     */
-    public abstract void drawHighlight(Canvas canvas);
 
 }// class CustomElement

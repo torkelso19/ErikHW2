@@ -1,7 +1,6 @@
 package cs301.up.edu.erikhw2;
 
 import android.graphics.Canvas;
-import android.graphics.Rect;
 
 /**
  * <!-- class CustomCircle -->
@@ -32,7 +31,11 @@ public class CustomCircle extends CustomElement {
         this.radius = radius;
     }
 
-
+    /**
+     * drawMe draws this circle element onto the canvas given
+     *
+     * @param canvas is passed from the surfaceView's canvas
+     */
     @Override
     public void drawMe(Canvas canvas) {
         canvas.drawCircle(x, y, radius, myPaint);  //main circle
@@ -40,29 +43,16 @@ public class CustomCircle extends CustomElement {
     }
 
 
-    /** for ease of calculation, just draw a box around the circle and see if the point is in that */
+    /** for ease of calculation, just draw a box around the circle and see if
+     * the point is in that */
     @Override
     public boolean containsPoint(int x, int y) {
         //Calculate the distance between this point and the center
         int xDist = Math.abs(x - this.x);
         int yDist = Math.abs(y - this.y);
-        int dist = (int)Math.sqrt(xDist*xDist + yDist*yDist);  //Thanks, Pythagoras :)
+        int dist = (int)Math.sqrt(xDist*xDist + yDist*yDist);  //Pythagoras :)
 
         return (dist < this.radius + TAP_MARGIN);
     }//containsPoint
-
-
-    /** I knew that middle school geometry class would pay off someday */
-    @Override
-    public int getSize() {
-        return (int)(Math.PI * this.radius * this.radius);
-    }
-
-
-    @Override
-    public void drawHighlight(Canvas canvas) {
-        canvas.drawCircle(x, y, radius, highlightPaint);
-        canvas.drawCircle(x, y, radius, outlinePaint);  //keep outline so it stands out
-    }
 
 }//class CustomCircle

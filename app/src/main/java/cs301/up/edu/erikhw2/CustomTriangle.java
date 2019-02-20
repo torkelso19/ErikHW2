@@ -8,7 +8,7 @@ import android.graphics.Point;
 /**
  * <!-- class CustomTriangle -->
  *
- * This class
+ * This class defines a custom drawing element that is a triangle.
  *
  * @author Erik Torkelson
  * @see CustomElement
@@ -17,6 +17,16 @@ public class CustomTriangle extends CustomElement {
 
     private Path triangle;
 
+    /**
+     * Constructor for creating a triangle element. It requires the following
+     * parameters:
+     *
+     * @param name The name of element to reference it
+     * @param color The integer hex value of the color of the element
+     * @param a The first point of the triangle
+     * @param b The second point of the triangle
+     * @param c The third point of the triangle
+     */
     public CustomTriangle(String name, int color, Point a, Point b, Point c)
     {
         super(name, color);
@@ -39,9 +49,9 @@ public class CustomTriangle extends CustomElement {
     }
 
     /**
-     * drawMe
+     * drawMe draws this triangle element onto the canvas given
      *
-     * @param canvas
+     * @param canvas is passed from the surfaceView's canvas
      */
     @Override
     public void drawMe(Canvas canvas) {
@@ -50,11 +60,12 @@ public class CustomTriangle extends CustomElement {
     }
 
     /**
-     * containsPoint
+     * containsPoint checks if the given x and y coordinates are contained
+     * inside the triangle element
      *
      * @param x integer coordinate
      * @param y integer coordinate
-     * @return true if the point is contained in the triangle
+     * @return true if the point is contained in the triangle, false otherwise
      */
     @Override
     public boolean containsPoint(int x, int y) {
@@ -68,31 +79,7 @@ public class CustomTriangle extends CustomElement {
                     return true;
                 }
             }
-
         }
-
         return false;
-    }
-
-
-    /**
-     * getSize
-     *
-     */
-    @Override
-    public int getSize() {
-        return 0;
-    }
-
-
-    /**
-     * drawHighlight
-     *
-     * @param canvas
-     */
-    @Override
-    public void drawHighlight(Canvas canvas) {
-        canvas.drawPath(triangle, highlightPaint);
-        canvas.drawPath(triangle, outlinePaint);
     }
 }
