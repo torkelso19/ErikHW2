@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <cs301.up.edu.erikhw2.Display
+        android:id="@+id/drawingSurface"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_weight="10" />
+
+    <TextView
+        android:id="@+id/currentElement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight=".5"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="Current Element: None" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/redTag"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:text="RED = "/>
+
+        <TextView
+            android:id="@+id/redValue"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="0"/>
+
+        <SeekBar
+            android:id="@+id/redSeekBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="255" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/greenTag"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:text="GREEN = "/>
+
+        <TextView
+            android:id="@+id/greenValue"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="0"/>
+
+        <SeekBar
+            android:id="@+id/greenSeekBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="255" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/blueTag"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:text="BLUE = "/>
+
+        <TextView
+            android:id="@+id/blueValue"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="0"/>
+
+        <SeekBar
+            android:id="@+id/blueSeekBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="255" />
+
+    </LinearLayout>
+
+</LinearLayout>
