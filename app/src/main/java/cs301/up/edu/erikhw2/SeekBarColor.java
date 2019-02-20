@@ -5,6 +5,9 @@ package cs301.up.edu.erikhw2;
  *
  * This enum defines the different colors that a seekbar can control
  *
+ * It is used so that each seekbar listener can determine which color
+ * it controls
+ *
  * @author Erik Torkelson
  *
  */

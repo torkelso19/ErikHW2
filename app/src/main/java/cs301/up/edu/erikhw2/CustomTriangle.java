@@ -15,6 +15,7 @@ import android.graphics.Point;
  */
 public class CustomTriangle extends CustomElement {
 
+    // Instance variable that contains the path the lines of the triangle occupy
     private Path triangle;
 
     /**
@@ -61,7 +62,8 @@ public class CustomTriangle extends CustomElement {
 
     /**
      * containsPoint checks if the given x and y coordinates are contained
-     * inside the triangle element
+     * inside the triangle element. The math for the method was calculated on
+     * paper and accurately represents the exact borders of the triangle.
      *
      * @param x integer coordinate
      * @param y integer coordinate
@@ -69,12 +71,17 @@ public class CustomTriangle extends CustomElement {
      */
     @Override
     public boolean containsPoint(int x, int y) {
+        //Check if touch is within a box around the triangle
         if ((y < 400) & ((x > 650) & (x < (1920 - 650))) & (y > 150)) {
+            //Left half of triangle calculations
             if (x < 960) {
+                //Check if point is within bounds of a line I calculated
                 if (y > (double)(x*-25)/(double)31+924.2) {
                     return true;
                 }
+            //Right half of triangle calculations
             } else {
+                //Check if point is within bounds of a line I calculated
                 if (y > (double)(x*25)/(double)31-624.2) {
                     return true;
                 }

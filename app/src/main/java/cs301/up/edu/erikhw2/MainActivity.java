@@ -14,11 +14,11 @@ import android.widget.TextView;
  * This class is the main class called to run the application
  *
  * @author Erik Torkelson
- *
+ * Date: February 19, 2019
  */
 public class MainActivity extends AppCompatActivity{
 
-    //Instance Variables of XML Objects
+    //Instance Variables of XML Objects needed
     private SeekBar redSeekBar, greenSeekBar, blueSeekBar;
     private TextView currentElement, redValue, greenValue, blueValue;
     private Display display;
@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Use my xml layout as layout for app
         setContentView(R.layout.activity_main);
 
         /**
@@ -52,22 +54,28 @@ public class MainActivity extends AppCompatActivity{
         decorView.setSystemUiVisibility(uiOptions);
 
 
-
+        //Find references to the textViews displaying the RGB values
         redValue = findViewById(R.id.redValue);
         greenValue = findViewById(R.id.greenValue);
         blueValue = findViewById(R.id.blueValue);
 
+        //Find references to seekBars
         redSeekBar = findViewById(R.id.redSeekBar);
         greenSeekBar = findViewById(R.id.greenSeekBar);
         blueSeekBar = findViewById(R.id.blueSeekBar);
 
+        //Find reference to current element textView and the surfaceView
         currentElement = findViewById(R.id.currentElement);
         display = findViewById(R.id.drawingSurface);
+
+        //Set listener for surfaceView
         display.setOnTouchListener(
                 new DisplayListener(currentElement, display, redSeekBar,
                         greenSeekBar, blueSeekBar)
         );
 
+        //Set listeners for the seekBars with corresponding textviews and
+        //colors passed
         redSeekBar.setOnSeekBarChangeListener(
                 new SeekBarListener(redValue, display, SeekBarColor.RED));
         greenSeekBar.setOnSeekBarChangeListener(
@@ -82,7 +90,7 @@ public class MainActivity extends AppCompatActivity{
 
     /**
      * onResume is called when the app is resumed from doing something else
-     * on the tablet
+     * on the tablet (Drop down menu, going to sleep, etc...).
      *
      */
     @Override
@@ -96,6 +104,5 @@ public class MainActivity extends AppCompatActivity{
                 View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
         decorView.setSystemUiVisibility(uiOptions);
     }
-
 
 }
